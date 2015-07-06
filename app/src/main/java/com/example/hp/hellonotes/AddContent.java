@@ -1,6 +1,5 @@
 package com.example.hp.hellonotes;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +23,7 @@ import java.util.Date;
 /**
  * Created by hp on 2015/6/26.
  */
-public class AddContent extends Activity implements View.OnClickListener {
+public class AddContent extends ActionBarActivity implements View.OnClickListener {
 
     private String val;
     private Button savebtn,deletebtn;

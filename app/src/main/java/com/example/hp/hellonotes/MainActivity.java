@@ -1,18 +1,18 @@
 package com.example.hp.hellonotes;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
     private Button textbtn,imgbtn,videobtn;
     private ListView lv;

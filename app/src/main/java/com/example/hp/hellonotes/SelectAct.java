@@ -1,11 +1,11 @@
 package com.example.hp.hellonotes;
 
-import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +15,7 @@ import android.widget.VideoView;
 /**
  * Created by hp on 2015/6/26.
  */
-public class SelectAct extends Activity implements View.OnClickListener {
+public class SelectAct extends ActionBarActivity implements View.OnClickListener {
 
     private Button s_delete,s_back;
     private ImageView s_img;
