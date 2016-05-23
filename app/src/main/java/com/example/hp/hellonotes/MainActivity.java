@@ -14,7 +14,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
-    private Button textbtn,imgbtn,videobtn;
+    private Button textbtn, imgbtn, videobtn;
     private ListView lv;
     private Intent i;
     private MyAdapter adapter;
@@ -29,11 +29,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         initView();
 
     }
-    public void initView(){
-        lv = (ListView)findViewById(R.id.list);
-        textbtn = (Button)findViewById(R.id.text);
-        imgbtn = (Button)findViewById(R.id.img);
-        videobtn = (Button)findViewById(R.id.video);
+
+    public void initView() {
+        lv = (ListView) findViewById(R.id.list);
+        textbtn = (Button) findViewById(R.id.text);
+        imgbtn = (Button) findViewById(R.id.img);
+        videobtn = (Button) findViewById(R.id.video);
         textbtn.setOnClickListener(this);
         imgbtn.setOnClickListener(this);
         videobtn.setOnClickListener(this);
@@ -44,45 +45,45 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 cursor.moveToPosition(position);
-                Intent i = new Intent(MainActivity.this,SelectAct.class);
-                i.putExtra(NotesDB.ID,cursor.getInt(cursor.getColumnIndex(NotesDB.ID)));
-                i.putExtra(NotesDB.CONTENT,cursor.getString(cursor.getColumnIndex(NotesDB.CONTENT)));
-                i.putExtra(NotesDB.TIME,cursor.getString(cursor.getColumnIndex(NotesDB.TIME)));
-                i.putExtra(NotesDB.PATH,cursor.getString(cursor.getColumnIndex(NotesDB.PATH)));
-                i.putExtra(NotesDB.VIDEO,cursor.getString(cursor.getColumnIndex(NotesDB.VIDEO)));
+                Intent i = new Intent(MainActivity.this, SelectAct.class);
+                i.putExtra(NotesDB.ID, cursor.getInt(cursor.getColumnIndex(NotesDB.ID)));
+                i.putExtra(NotesDB.CONTENT, cursor.getString(cursor.getColumnIndex(NotesDB.CONTENT)));
+                i.putExtra(NotesDB.TIME, cursor.getString(cursor.getColumnIndex(NotesDB.TIME)));
+                i.putExtra(NotesDB.PATH, cursor.getString(cursor.getColumnIndex(NotesDB.PATH)));
+                i.putExtra(NotesDB.VIDEO, cursor.getString(cursor.getColumnIndex(NotesDB.VIDEO)));
                 startActivity(i);
             }
         });
     }
 
-    public void onClick(View v){
-        i = new Intent(this,AddContent.class);
-        switch (v.getId()){
+    public void onClick(View v) {
+        i = new Intent(this, AddContent.class);
+        switch (v.getId()) {
             case R.id.text:
-                i.putExtra("flag","1");
+                i.putExtra("flag", "1");
                 startActivity(i);
                 break;
             case R.id.img:
-                i.putExtra("flag","2");
+                i.putExtra("flag", "2");
                 startActivity(i);
                 break;
             case R.id.video:
-                i.putExtra("flag","3");
+                i.putExtra("flag", "3");
                 startActivity(i);
                 break;
         }
 
     }
 
-    public void selectDB(){
-        cursor=dbReader.query(NotesDB.TABLE_NAME,null,null,null,null,null,null);
-        adapter=new MyAdapter(this,cursor);
+    public void selectDB() {
+        cursor = dbReader.query(NotesDB.TABLE_NAME, null, null, null, null, null, null);
+        adapter = new MyAdapter(this, cursor);
         lv.setAdapter(adapter);
     }
-    protected void onResume(){
+
+    protected void onResume() {
         super.onResume();
         selectDB();
     }
-
 
 }

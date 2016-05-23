@@ -16,16 +16,17 @@ public class NotesDB extends SQLiteOpenHelper {
     public static final String TIME = "time";
 
     public NotesDB(Context context) {
-        super(context,"notes",null,1);
+        super(context, "notes", null, 1);
     }
-    public void onCreate(SQLiteDatabase db){
+
+    public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID
                 + " INTEGER PRIMARY KEY AUTOINCREMENT," + CONTENT
-                + " TEXT NOT NULL," + PATH +" TEXT NOT NULL," + VIDEO
+                + " TEXT NOT NULL," + PATH + " TEXT NOT NULL," + VIDEO
                 + " TEXT NOT NULL," + TIME + " TEXT NOT NULL)");
     }
 
-    public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion){
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 

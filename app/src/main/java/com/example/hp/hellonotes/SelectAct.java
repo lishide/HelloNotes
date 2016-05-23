@@ -17,7 +17,7 @@ import android.widget.VideoView;
  */
 public class SelectAct extends ActionBarActivity implements View.OnClickListener {
 
-    private Button s_delete,s_back;
+    private Button s_delete, s_back;
     private ImageView s_img;
     private VideoView s_video;
     private TextView s_tv;
@@ -29,35 +29,36 @@ public class SelectAct extends ActionBarActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select);
 //        System.out.println(getIntent().getIntExtra(NotesDB.ID, 0));
-        s_delete=(Button)findViewById(R.id.s_delete);
-        s_back=(Button)findViewById(R.id.s_back);
-        s_img=(ImageView)findViewById(R.id.s_img);
-        s_video=(VideoView)findViewById(R.id.s_video);
-        s_tv=(TextView)findViewById(R.id.s_tv);
-        notesDB=new NotesDB(this);
-        dbWriter=notesDB.getWritableDatabase();
+        s_delete = (Button) findViewById(R.id.s_delete);
+        s_back = (Button) findViewById(R.id.s_back);
+        s_img = (ImageView) findViewById(R.id.s_img);
+        s_video = (VideoView) findViewById(R.id.s_video);
+        s_tv = (TextView) findViewById(R.id.s_tv);
+        notesDB = new NotesDB(this);
+        dbWriter = notesDB.getWritableDatabase();
         s_back.setOnClickListener(this);
         s_delete.setOnClickListener(this);
 
-        if (getIntent().getStringExtra(NotesDB.PATH).equals("null")){
+        if (getIntent().getStringExtra(NotesDB.PATH).equals("null")) {
             s_img.setVisibility(View.GONE);
-        }else {
+        } else {
             s_img.setVisibility(View.VISIBLE);
         }
-        if (getIntent().getStringExtra(NotesDB.VIDEO).equals("null")){
+        if (getIntent().getStringExtra(NotesDB.VIDEO).equals("null")) {
             s_video.setVisibility(View.GONE);
-        }else {
+        } else {
             s_video.setVisibility(View.VISIBLE);
         }
         s_tv.setText(getIntent().getStringExtra(NotesDB.CONTENT));
-        Bitmap bitmap= BitmapFactory.decodeFile(getIntent()
+        Bitmap bitmap = BitmapFactory.decodeFile(getIntent()
                 .getStringExtra(NotesDB.PATH));
         s_img.setImageBitmap(bitmap);
         s_video.setVideoURI(Uri.parse(getIntent().getStringExtra(NotesDB.VIDEO)));
         s_video.start();
     }
-    public void onClick(View v){
-        switch (v.getId()){
+
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.s_delete:
                 deleteDate();
                 finish();
@@ -68,8 +69,8 @@ public class SelectAct extends ActionBarActivity implements View.OnClickListener
         }
     }
 
-    public void deleteDate(){
+    public void deleteDate() {
         dbWriter.delete(NotesDB.TABLE_NAME,
-                "_id="+getIntent().getIntExtra(NotesDB.ID,0),null);
+                "_id=" + getIntent().getIntExtra(NotesDB.ID, 0), null);
     }
 }
